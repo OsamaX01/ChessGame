@@ -27,14 +27,14 @@ abstract public class Board {
         return column;
     }
 
-    public Piece getPieceAt(Location location) {
+    private Piece getPieceAt(Location location) {
         if (location == null) {
             throw new NullPointerException();
         }
         return pieces[location.getRow()][location.getColumn()];
     }
 
-    public void setPieceAt(Piece piece, Location location) {
+    private void setPieceAt(Piece piece, Location location) {
         if (location == null) {
             throw new NullPointerException();
         }
