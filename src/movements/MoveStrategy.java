@@ -1,4 +1,4 @@
-package movments;
+package movements;
 
 public interface MoveStrategy {
     void validateMove();
