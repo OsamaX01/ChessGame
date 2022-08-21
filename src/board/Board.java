@@ -1,6 +1,7 @@
 package board;
 
 import general.Location;
+import general.Player;
 import pieces.Piece;
 
 import java.util.Arrays;
@@ -41,23 +42,23 @@ abstract public class Board {
         pieces[location.getRow()][location.getColumn()] = piece;
     }
 
-    public void addPiece(Piece piece, Location location) {
-        if (getPieceAt(location) != null) {
+    public void addPiece(Piece piece) {
+        if (getPieceAt(piece.getLocation()) != null) {
             System.out.println("this location is occupied by another piece!");
             return;
         }
-        setPieceAt(piece, location);
+        setPieceAt(piece, piece.getLocation());
     }
 
-    public void removePiece(Piece piece, Location location) {
-        if (getPieceAt(location) == null) {
+    public void removePiece(Piece piece) {
+        if (getPieceAt(piece.getLocation()) == null) {
             System.out.println("this location has no piece!");
             return;
         }
-        setPieceAt(null, location);
+        setPieceAt(null, piece.getLocation());
     }
 
-    public abstract void initializeBoardWithPieces();
+    public abstract void initializeBoardWithPieces(Player white, Player black);
 
     @Override
     public boolean equals(Object o) {
