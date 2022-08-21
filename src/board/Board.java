@@ -57,6 +57,8 @@ abstract public class Board {
         setPieceAt(null, location);
     }
 
+    public abstract void initializeBoardWithPieces();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
