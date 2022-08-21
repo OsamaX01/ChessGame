@@ -5,21 +5,31 @@ import general.Player;
 import movements.MoveStrategy;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 abstract public class Piece {
+    private String name;
     private Player owner;
     private Location location;
     private final boolean isFirsMove;
     private ArrayList<MoveStrategy> movements;
 
-    public Piece(Player owner, Location location) {
-        if (owner == null || location == null) {
+    public Piece(String name, Player owner, Location location) {
+        if (name == null || owner == null || location == null) {
             throw new NullPointerException();
         }
+        this.name = name;
         this.owner = owner;
         this.location = location;
         isFirsMove = true;
         movements = new ArrayList<>();
+    }
+
+    public void setName(String name) {
+        if (name == null) {
+            throw new NullPointerException();
+        }
+        this.name = name;
     }
 
     public void setOwner(Player owner) {
@@ -34,6 +44,10 @@ abstract public class Piece {
             throw new NullPointerException();
         }
         this.location = location;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Player getOwner() {
@@ -72,5 +86,13 @@ abstract public class Piece {
 
     public ArrayList<MoveStrategy> getMovements() {
         return movements;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Piece piece = (Piece) o;
+        return Objects.equals(owner, piece.owner) && Objects.equals(name, piece.name);
     }
 }
