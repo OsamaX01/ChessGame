@@ -16,6 +16,9 @@ public class Player {
     }
 
     public void setName(String name) {
+        if (name == null) {
+            throw new NullPointerException();
+        }
         this.name = name;
     }
 
@@ -24,6 +27,9 @@ public class Player {
     }
 
     public void setColor(Color color) {
+        if (color == null) {
+            throw new NullPointerException();
+        }
         this.color = color;
     }
 
