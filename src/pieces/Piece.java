@@ -13,8 +13,8 @@ abstract public class Piece {
     private final boolean isFirsMove;
     private ArrayList<MoveStrategy> movements;
 
-    public Piece(String name, Player owner, Location location) {
-        if (name == null || owner == null || location == null) {
+    public Piece(Player owner, Location location) {
+        if (owner == null || location == null) {
             throw new NullPointerException();
         }
         this.owner = owner;
