@@ -1,3 +1,5 @@
+package general;
+
 import java.util.Objects;
 
 public class Player {

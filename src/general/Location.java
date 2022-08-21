@@ -1,3 +1,5 @@
+package general;
+
 import javafx.util.Pair;
 
 public class Location extends Pair<Integer, Integer> {
