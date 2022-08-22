@@ -2,10 +2,11 @@ package movements;
 
 import board.Board;
 import general.Location;
+
 import handlers.BaseHandler;
-import handlers.OneMoveForwardHandler;
-import handlers.ValidDestinationHandler;
 import handlers.NullPointerHandler;
+import handlers.ValidDestinationHandler;
+import handlers.OneMoveForwardHandler;
 
 public class BasicOneForwardStrategy implements MoveStrategy {
     @Override
