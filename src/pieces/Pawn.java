@@ -2,6 +2,8 @@ package pieces;
 
 import general.Location;
 import general.Player;
+import movements.BasicOneForwardStrategy;
+import movements.TwoForwardAtStartStrategy;
 
 public class Pawn extends Piece {
     public Pawn(Player owner, Location location) {
@@ -11,5 +13,10 @@ public class Pawn extends Piece {
     @Override
     public String getName() {
         return "Pawn";
+    }
+
+    protected void setMovements() {
+        addMovementStrategy(new BasicOneForwardStrategy());
+        addMovementStrategy(new TwoForwardAtStartStrategy());
     }
 }
