@@ -9,9 +9,14 @@ public class NoPiecesBetweenHandler extends BaseHandler {
     protected boolean isValid(Board board, Location from, Location to) {
         int fromRow = from.getRow();
         int fromColumn = from.getColumn();
-        while (fromRow != to.getRow() || fromColumn != to.getColumn()) {
+        System.out.println(fromRow + " " + fromColumn);
+        while (true) {
             fromRow += getCloser(fromRow, to.getRow());
             fromColumn += getCloser(fromColumn, to.getColumn());
+            System.out.println("checking " + fromRow + " " + fromColumn);
+            if (fromRow == to.getRow() && fromColumn == to.getColumn()) {
+                break;
+            }
             if (board.getPieceAt(new Location(fromRow, fromColumn)) != null) {
                 return false;
             }
@@ -20,7 +25,7 @@ public class NoPiecesBetweenHandler extends BaseHandler {
     }
 
     private int getCloser(int from, int to) {
-        int differance = from - to;
+        int differance = to - from;
         if (differance == 0) {
             return 0;
         } else if (differance < 0) {
