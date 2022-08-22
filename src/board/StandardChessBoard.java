@@ -33,7 +33,7 @@ public class StandardChessBoard extends Board {
         addPiece(new Queen(player, new Location(mainRow, 3)));
         addPiece(new King(player, new Location(mainRow, 4)));
 
-        for (int i = mainRow; i < getColumn(); i++) {
+        for (int i = 0; i < getColumn(); i++) {
             addPiece(new Pawn(player, new Location(pawnsRow, i)));
         }
     }
