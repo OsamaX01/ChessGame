@@ -28,7 +28,7 @@ abstract public class Board {
         return column;
     }
 
-    private Piece getPieceAt(Location location) {
+    public Piece getPieceAt(Location location) {
         if (location == null) {
             throw new NullPointerException();
         }
