@@ -13,7 +13,6 @@ public class NoPiecesBetweenHandler extends BaseHandler {
         while (true) {
             fromRow += getCloser(fromRow, to.getRow());
             fromColumn += getCloser(fromColumn, to.getColumn());
-            System.out.println("checking " + fromRow + " " + fromColumn);
             if (fromRow == to.getRow() && fromColumn == to.getColumn()) {
                 break;
             }
