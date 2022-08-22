@@ -87,6 +87,6 @@ abstract public class Piece {
 
     @Override
     public String toString() {
-        return getName() + "at " + location;
+        return getName() + " at " + location;
     }
 }
