@@ -15,6 +15,7 @@ public class Rock extends Piece {
         return "Rock";
     }
 
+    @Override
     protected void setMovements() {
          addMovementStrategy(new VerticalMoveStrategy());
          addMovementStrategy(new HorizontalMoveStrategy());

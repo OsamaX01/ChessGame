@@ -15,6 +15,7 @@ public class Bishop extends Piece {
         return "Bishop";
     }
 
+    @Override
     protected void setMovements() {
         addMovementStrategy(new LeftToRightDiagonalsStrategy());
         addMovementStrategy(new RightToLeftDiagonalsStrategy());

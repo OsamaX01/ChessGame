@@ -15,6 +15,7 @@ public class Pawn extends Piece {
         return "Pawn";
     }
 
+    @Override
     protected void setMovements() {
         addMovementStrategy(new BasicOneForwardStrategy());
         addMovementStrategy(new TwoForwardAtStartStrategy());

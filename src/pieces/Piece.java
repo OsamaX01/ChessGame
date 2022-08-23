@@ -21,6 +21,7 @@ abstract public class Piece {
         this.location = location;
         isFirsMove = true;
         movements = new ArrayList<>();
+        setMovements();
     }
 
     public void setOwner(Player owner) {
@@ -76,6 +77,8 @@ abstract public class Piece {
     }
 
     abstract public String getName();
+
+    abstract protected void setMovements();
 
     @Override
     public boolean equals(Object o) {

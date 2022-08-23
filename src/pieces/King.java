@@ -14,6 +14,7 @@ public class King extends Piece {
         return "King";
     }
 
+    @Override
     protected void setMovements() {
         addMovementStrategy(new KingStandardMoveStrategy());
     }

@@ -17,6 +17,7 @@ public class Queen extends Piece {
         return "Queen";
     }
 
+    @Override
     protected void setMovements() {
         addMovementStrategy(new VerticalMoveStrategy());
         addMovementStrategy(new HorizontalMoveStrategy());
