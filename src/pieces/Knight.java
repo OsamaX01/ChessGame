@@ -2,6 +2,7 @@ package pieces;
 
 import general.Location;
 import general.Player;
+import movements.KnightStandardStrategy;
 
 public class Knight extends Piece {
     public Knight(Player owner, Location location) {
@@ -11,5 +12,9 @@ public class Knight extends Piece {
     @Override
     public String getName() {
         return "Knight";
+    }
+
+    protected void setMovements() {
+        addMovementStrategy(new KnightStandardStrategy());
     }
 }
