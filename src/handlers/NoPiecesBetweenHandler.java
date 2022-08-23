@@ -9,7 +9,6 @@ public class NoPiecesBetweenHandler extends BaseHandler {
     protected boolean isValid(Board board, Location from, Location to) {
         int fromRow = from.getRow();
         int fromColumn = from.getColumn();
-        System.out.println(fromRow + " " + fromColumn);
         while (true) {
             fromRow += getCloser(fromRow, to.getRow());
             fromColumn += getCloser(fromColumn, to.getColumn());
