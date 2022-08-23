@@ -2,6 +2,8 @@ package pieces;
 
 import general.Location;
 import general.Player;
+import movements.LeftToRightDiagonalsStrategy;
+import movements.RightToLeftDiagonalsStrategy;
 
 public class Bishop extends Piece {
     public Bishop(Player owner, Location location) {
@@ -11,5 +13,10 @@ public class Bishop extends Piece {
     @Override
     public String getName() {
         return "Bishop";
+    }
+
+    protected void setMovements() {
+        addMovementStrategy(new LeftToRightDiagonalsStrategy());
+        addMovementStrategy(new RightToLeftDiagonalsStrategy());
     }
 }
