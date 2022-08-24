@@ -43,6 +43,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return String.format("Player: %s (%s)", name, color);
+        return String.format("%s Player", color);
     }
 }
