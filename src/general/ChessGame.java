@@ -69,9 +69,12 @@ public class ChessGame {
         Location from = move.getKey();
         Location to = move.getValue();
 
-        if (board.getPieceAt(to) != null) {
-            board.removePiece(board.getPieceAt(to));
+        Piece atDestinationPiece = board.getPieceAt(to);
+        if (atDestinationPiece != null) {
+            System.out.println(currentPlayer + " killed " + atDestinationPiece);
+            board.removePiece(atDestinationPiece);
         }
+
         Piece currentPiece = board.getPieceAt(from);
         board.removePiece(currentPiece);
         currentPiece.setLocation(to);
