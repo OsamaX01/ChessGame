@@ -20,41 +20,69 @@ public class ChessGame {
     }
 
     private Pair<Location, Location> getValidMove(Player player) {
+        class InputValidator {
+            private final String input;
+            public InputValidator(String input) {
+                this.input = input;
+            }
+
+            public boolean isValidInput() {
+                if (!input.matches("[A-H][1-8] [A-H][1-8]")) {
+                    System.out.println("Invalid input : Please enter your move at the following format:");
+                    System.out.println("[Rank followed by file] space [Rank followed by file], in Capital letters");
+                    System.out.println("e.g G8 F6");
+                    return false;
+                }
+
+                return true;
+            }
+
+            public boolean isValidSquare(Location from, Location to) {
+                Piece currentPiece = board.getPieceAt(from);
+                if (currentPiece == null) {
+                    System.out.println("Invalid input : Empty square:");
+                    return false;
+                } else if (!currentPiece.getOwner().equals(player)) {
+                    System.out.println("Invalid input : This is an Opponent " + currentPiece);
+                    return false;
+                }
+                return true;
+            }
+
+            public boolean isValidMovement(Location from, Location to) {
+                Piece currentPiece = board.getPieceAt(from);
+
+                boolean canMove = false;
+                for (MoveStrategy movement : currentPiece.getMovements()) {
+                    if (movement.validateMove(board, from, to)) {
+                        canMove = true;
+                        break;
+                    }
+                }
+
+                if (!canMove) {
+                    System.out.println("Invalid Move : " + currentPiece + " Can't Move to " + to);
+                    return false;
+                }
+                return true;
+            }
+        }
+
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.println("Enter next move (" + player + ") :");
             String enteredMove = scanner.nextLine();
+            InputValidator inputValidator = new InputValidator(enteredMove);
 
-            if (!enteredMove.matches("[A-H][1-8] [A-H][1-8]")) {
-                System.out.println("Invalid input : Please enter your move at the following format:");
-                System.out.println("[Rank followed by file] space [Rank followed by file], in Capital letters");
-                System.out.println("e.g G8 F6");
+            if (!inputValidator.isValidInput()) {
                 continue;
             }
 
             Location from = convertMoveToLocation(enteredMove.charAt(1), enteredMove.charAt(0));
             Location to = convertMoveToLocation(enteredMove.charAt(4), enteredMove.charAt(3));
 
-            Piece currentPiece = board.getPieceAt(from);
-            if (currentPiece == null) {
-                System.out.println("Invalid input : Empty square:");
-                continue;
-            } else if (!currentPiece.getOwner().equals(player)) {
-                System.out.println("Invalid input : This is an Opponent " + currentPiece);
-                continue;
-            }
-
-            boolean canMove = false;
-            for (MoveStrategy movement : currentPiece.getMovements()) {
-                if (movement.validateMove(board, from, to)) {
-                    canMove = true;
-                    break;
-                }
-            }
-
-            if (!canMove) {
-                System.out.println("Invalid Move : " + currentPiece + " Can't Move to " + to);
+            if (inputValidator.isValidSquare(from, to) || inputValidator.isValidMovement(from, to)) {
                 continue;
             }
 
