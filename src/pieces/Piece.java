@@ -78,6 +78,8 @@ abstract public class Piece {
 
     abstract public String getName();
 
+    abstract public String getSymbol();
+
     abstract protected void setMovements();
 
     @Override

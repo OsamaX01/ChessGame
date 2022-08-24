@@ -16,6 +16,11 @@ public class Bishop extends Piece {
     }
 
     @Override
+    public String getSymbol() {
+        return "B";
+    }
+
+    @Override
     protected void setMovements() {
         addMovementStrategy(new LeftToRightDiagonalsStrategy());
         addMovementStrategy(new RightToLeftDiagonalsStrategy());

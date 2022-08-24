@@ -15,6 +15,11 @@ public class Knight extends Piece {
     }
 
     @Override
+    public String getSymbol() {
+        return "T";
+    }
+
+    @Override
     protected void setMovements() {
         addMovementStrategy(new KnightStandardStrategy());
     }

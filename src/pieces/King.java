@@ -15,6 +15,11 @@ public class King extends Piece {
     }
 
     @Override
+    public String getSymbol() {
+        return "K";
+    }
+
+    @Override
     protected void setMovements() {
         addMovementStrategy(new KingStandardMoveStrategy());
     }

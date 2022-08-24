@@ -18,6 +18,11 @@ public class Queen extends Piece {
     }
 
     @Override
+    public String getSymbol() {
+        return "Q";
+    }
+
+    @Override
     protected void setMovements() {
         addMovementStrategy(new VerticalMoveStrategy());
         addMovementStrategy(new HorizontalMoveStrategy());

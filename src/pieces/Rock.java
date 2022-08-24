@@ -16,6 +16,11 @@ public class Rock extends Piece {
     }
 
     @Override
+    public String getSymbol() {
+        return "R";
+    }
+
+    @Override
     protected void setMovements() {
          addMovementStrategy(new VerticalMoveStrategy());
          addMovementStrategy(new HorizontalMoveStrategy());

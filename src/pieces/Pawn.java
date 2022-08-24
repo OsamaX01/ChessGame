@@ -16,6 +16,11 @@ public class Pawn extends Piece {
     }
 
     @Override
+    public String getSymbol() {
+        return "P";
+    }
+
+    @Override
     protected void setMovements() {
         addMovementStrategy(new BasicOneForwardStrategy());
         addMovementStrategy(new TwoForwardAtStartStrategy());
