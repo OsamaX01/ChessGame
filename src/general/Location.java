@@ -18,7 +18,7 @@ public class Location extends Pair<Integer, Integer> {
 
     @Override
     public String toString() {
-        return "Location : " + getRow() + ", " + getColumn();
+        return "Location : " + (getRow() + 1) + ", " + (getColumn() + 1) + " ";
     }
 
     @Override
