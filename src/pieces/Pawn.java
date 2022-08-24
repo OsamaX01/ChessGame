@@ -1,13 +1,13 @@
 package pieces;
 
-import general.Location;
+import general.Square;
 import general.Player;
 import movements.BasicOneForwardStrategy;
 import movements.TwoForwardAtStartStrategy;
 
 public class Pawn extends Piece {
-    public Pawn(Player owner, Location location) {
-        super(owner, location);
+    public Pawn(Player owner, Square square) {
+        super(owner, square);
     }
 
     @Override

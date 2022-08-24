@@ -2,9 +2,9 @@ package general;
 
 import javafx.util.Pair;
 
-public class Location extends Pair<Integer, Integer> {
+public class Square extends Pair<Integer, Integer> {
 
-    public Location(Integer row, Integer column) {
+    public Square(Integer row, Integer column) {
         super(row, column);
     }
 
@@ -18,7 +18,7 @@ public class Location extends Pair<Integer, Integer> {
 
     @Override
     public String toString() {
-        return "Location : " + (getRow() + 1) + ", " + (getColumn() + 1) + " ";
+        return "Square : " + (getRow() + 1) + ", " + (getColumn() + 1) + " ";
     }
 
     @Override

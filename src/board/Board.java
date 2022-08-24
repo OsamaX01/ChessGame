@@ -1,6 +1,6 @@
 package board;
 
-import general.Location;
+import general.Square;
 import general.Player;
 import pieces.Piece;
 
@@ -28,18 +28,18 @@ abstract public class Board {
         return column;
     }
 
-    public Piece getPieceAt(Location location) {
-        if (location == null) {
+    public Piece getPieceAt(Square square) {
+        if (square == null) {
             throw new NullPointerException();
         }
-        return pieces[location.getRow()][location.getColumn()];
+        return pieces[square.getRow()][square.getColumn()];
     }
 
-    private void setPieceAt(Piece piece, Location location) {
-        if (location == null) {
+    private void setPieceAt(Piece piece, Square square) {
+        if (square == null) {
             throw new NullPointerException();
         }
-        pieces[location.getRow()][location.getColumn()] = piece;
+        pieces[square.getRow()][square.getColumn()] = piece;
     }
 
     public void addPiece(Piece piece) {

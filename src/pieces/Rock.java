@@ -1,13 +1,13 @@
 package pieces;
 
-import general.Location;
+import general.Square;
 import general.Player;
 import movements.HorizontalMoveStrategy;
 import movements.VerticalMoveStrategy;
 
 public class Rock extends Piece {
-    public Rock(Player owner, Location location) {
-        super(owner, location);
+    public Rock(Player owner, Square square) {
+        super(owner, square);
     }
 
     @Override

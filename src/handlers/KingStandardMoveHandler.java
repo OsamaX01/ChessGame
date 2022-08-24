@@ -1,11 +1,11 @@
 package handlers;
 
 import board.Board;
-import general.Location;
+import general.Square;
 
 public class KingStandardMoveHandler extends BaseHandler {
     @Override
-    protected boolean isValid(Board board, Location from, Location to) {
+    protected boolean isValid(Board board, Square from, Square to) {
         int[] x = {1, -1, 0, 0, 1, -1, 1, -1};
         int[] y = {0, 0, 1, -1, 1, 1, -1, -1};
 

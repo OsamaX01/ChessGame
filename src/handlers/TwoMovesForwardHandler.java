@@ -2,14 +2,11 @@ package handlers;
 
 import board.Board;
 import general.Color;
-import general.Location;
-
-import board.Board;
-import general.Location;
+import general.Square;
 
 public class TwoMovesForwardHandler extends BaseHandler {
     @Override
-    protected boolean isValid(Board board, Location from, Location to) {
+    protected boolean isValid(Board board, Square from, Square to) {
         if (board.getPieceAt(from).getOwner().getColor() == Color.BLACK) {
             return to.getRow() == from.getRow() - 2;
         }

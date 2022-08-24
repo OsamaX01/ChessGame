@@ -1,13 +1,13 @@
 package pieces;
 
-import general.Location;
+import general.Square;
 import general.Player;
 import movements.LeftToRightDiagonalsStrategy;
 import movements.RightToLeftDiagonalsStrategy;
 
 public class Bishop extends Piece {
-    public Bishop(Player owner, Location location) {
-        super(owner, location);
+    public Bishop(Player owner, Square square) {
+        super(owner, square);
     }
 
     @Override

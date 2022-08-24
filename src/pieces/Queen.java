@@ -1,6 +1,6 @@
 package pieces;
 
-import general.Location;
+import general.Square;
 import general.Player;
 import movements.HorizontalMoveStrategy;
 import movements.LeftToRightDiagonalsStrategy;
@@ -8,8 +8,8 @@ import movements.RightToLeftDiagonalsStrategy;
 import movements.VerticalMoveStrategy;
 
 public class Queen extends Piece {
-    public Queen(Player owner, Location location) {
-        super(owner, location);
+    public Queen(Player owner, Square square) {
+        super(owner, square);
     }
 
     @Override

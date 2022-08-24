@@ -1,6 +1,6 @@
 package pieces;
 
-import general.Location;
+import general.Square;
 import general.Player;
 import movements.MoveStrategy;
 
@@ -9,16 +9,16 @@ import java.util.Objects;
 
 abstract public class Piece {
     private Player owner;
-    private Location location;
+    private Square square;
     private final boolean isFirsMove;
     private ArrayList<MoveStrategy> movements;
 
-    public Piece(Player owner, Location location) {
-        if (owner == null || location == null) {
+    public Piece(Player owner, Square square) {
+        if (owner == null || square == null) {
             throw new NullPointerException();
         }
         this.owner = owner;
-        this.location = location;
+        this.square = square;
         isFirsMove = true;
         movements = new ArrayList<>();
         setMovements();
@@ -31,19 +31,19 @@ abstract public class Piece {
         this.owner = owner;
     }
 
-    public void setLocation(Location location) {
-        if (location == null) {
+    public void setLocation(Square square) {
+        if (square == null) {
             throw new NullPointerException();
         }
-        this.location = location;
+        this.square = square;
     }
 
     public Player getOwner() {
         return owner;
     }
 
-    public Location getLocation() {
-        return location;
+    public Square getLocation() {
+        return square;
     }
 
     public boolean isFirsMove() {
@@ -92,6 +92,6 @@ abstract public class Piece {
 
     @Override
     public String toString() {
-        return getName() + " at " + location;
+        return getName() + " at " + square;
     }
 }

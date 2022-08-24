@@ -1,7 +1,7 @@
 package handlers;
 
 import board.Board;
-import general.Location;
+import general.Square;
 
 public abstract class BaseHandler implements Handler {
     protected Handler nextHandler = null;
@@ -15,7 +15,7 @@ public abstract class BaseHandler implements Handler {
     }
 
     @Override
-    public boolean canHandle(Board board, Location from, Location to) {
+    public boolean canHandle(Board board, Square from, Square to) {
         if (isValid(board, from, to)) {
             return (nextHandler == null || nextHandler.canHandle(board, from, to));
         }
@@ -24,5 +24,5 @@ public abstract class BaseHandler implements Handler {
         }
     }
 
-    protected abstract boolean isValid(Board board, Location from, Location to);
+    protected abstract boolean isValid(Board board, Square from, Square to);
 }

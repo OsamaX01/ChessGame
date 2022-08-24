@@ -13,13 +13,13 @@ public class ChessGame {
     private Player white;
     private Player black;
 
-    private Location convertMoveToLocation(char rank, char file) {
+    private Square convertMoveToLocation(char rank, char file) {
         int a = rank - '1';
         int b = file - 'A';
-        return new Location(a, b);
+        return new Square(a, b);
     }
 
-    private Pair<Location, Location> getValidMove(Player player) {
+    private Pair<Square, Square> getValidMove(Player player) {
         class InputValidator {
             private final String input;
             public InputValidator(String input) {
@@ -37,7 +37,7 @@ public class ChessGame {
                 return true;
             }
 
-            public boolean isValidSquare(Location from, Location to) {
+            public boolean isValidSquare(Square from, Square to) {
                 Piece currentPiece = board.getPieceAt(from);
                 if (currentPiece == null) {
                     System.out.println("Invalid input : Empty square:");
@@ -49,7 +49,7 @@ public class ChessGame {
                 return true;
             }
 
-            public boolean isValidMovement(Location from, Location to) {
+            public boolean isValidMovement(Square from, Square to) {
                 Piece currentPiece = board.getPieceAt(from);
 
                 boolean canMove = false;
@@ -79,8 +79,8 @@ public class ChessGame {
                 continue;
             }
 
-            Location from = convertMoveToLocation(enteredMove.charAt(1), enteredMove.charAt(0));
-            Location to = convertMoveToLocation(enteredMove.charAt(4), enteredMove.charAt(3));
+            Square from = convertMoveToLocation(enteredMove.charAt(1), enteredMove.charAt(0));
+            Square to = convertMoveToLocation(enteredMove.charAt(4), enteredMove.charAt(3));
 
             if (!inputValidator.isValidSquare(from, to) || !inputValidator.isValidMovement(from, to)) {
                 continue;
@@ -93,9 +93,9 @@ public class ChessGame {
     private void makeMove() {
         Player currentPlayer = whiteTurn ? white : black;
         System.out.println(currentPlayer);
-        Pair<Location, Location> move =  getValidMove(currentPlayer);
-        Location from = move.getKey();
-        Location to = move.getValue();
+        Pair<Square, Square> move =  getValidMove(currentPlayer);
+        Square from = move.getKey();
+        Square to = move.getValue();
 
         Piece atDestinationPiece = board.getPieceAt(to);
         if (atDestinationPiece != null) {

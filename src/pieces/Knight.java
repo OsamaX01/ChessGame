@@ -1,12 +1,12 @@
 package pieces;
 
-import general.Location;
+import general.Square;
 import general.Player;
 import movements.KnightStandardStrategy;
 
 public class Knight extends Piece {
-    public Knight(Player owner, Location location) {
-        super(owner, location);
+    public Knight(Player owner, Square square) {
+        super(owner, square);
     }
 
     @Override

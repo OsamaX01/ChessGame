@@ -1,12 +1,12 @@
 package handlers;
 
 import board.Board;
-import general.Location;
+import general.Square;
 
 public class NoPiecesBetweenHandler extends BaseHandler {
 
     @Override
-    protected boolean isValid(Board board, Location from, Location to) {
+    protected boolean isValid(Board board, Square from, Square to) {
         int fromRow = from.getRow();
         int fromColumn = from.getColumn();
         while (true) {
@@ -15,7 +15,7 @@ public class NoPiecesBetweenHandler extends BaseHandler {
             if (fromRow == to.getRow() && fromColumn == to.getColumn()) {
                 break;
             }
-            if (board.getPieceAt(new Location(fromRow, fromColumn)) != null) {
+            if (board.getPieceAt(new Square(fromRow, fromColumn)) != null) {
                 return false;
             }
         }

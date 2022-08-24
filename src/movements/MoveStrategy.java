@@ -1,8 +1,8 @@
 package movements;
 
 import board.Board;
-import general.Location;
+import general.Square;
 
 public interface MoveStrategy {
-    boolean validateMove(Board board, Location from, Location to);
+    boolean validateMove(Board board, Square from, Square to);
 }

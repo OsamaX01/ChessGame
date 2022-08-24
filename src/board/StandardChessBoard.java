@@ -1,27 +1,27 @@
 package board;
 
 import general.Color;
-import general.Location;
+import general.Square;
 import general.Player;
 import pieces.*;
 
 public class StandardChessBoard extends Board {
 
     private void initializeOneBoardSideWithPieces(Player player, int mainRow, int pawnsRow) {
-        addPiece(new Rock(player, new Location(mainRow, 0)));
-        addPiece(new Rock(player, new Location(mainRow, 7)));
+        addPiece(new Rock(player, new Square(mainRow, 0)));
+        addPiece(new Rock(player, new Square(mainRow, 7)));
 
-        addPiece(new Knight(player, new Location(mainRow, 1)));
-        addPiece(new Knight(player, new Location(mainRow, 6)));
+        addPiece(new Knight(player, new Square(mainRow, 1)));
+        addPiece(new Knight(player, new Square(mainRow, 6)));
 
-        addPiece(new Bishop(player, new Location(mainRow, 2)));
-        addPiece(new Bishop(player, new Location(mainRow, 5)));
+        addPiece(new Bishop(player, new Square(mainRow, 2)));
+        addPiece(new Bishop(player, new Square(mainRow, 5)));
 
-        addPiece(new Queen(player, new Location(mainRow, 3)));
-        addPiece(new King(player, new Location(mainRow, 4)));
+        addPiece(new Queen(player, new Square(mainRow, 3)));
+        addPiece(new King(player, new Square(mainRow, 4)));
 
         for (int i = 0; i < getColumn(); i++) {
-            addPiece(new Pawn(player, new Location(pawnsRow, i)));
+            addPiece(new Pawn(player, new Square(pawnsRow, i)));
         }
     }
     public StandardChessBoard() {
@@ -44,7 +44,7 @@ public class StandardChessBoard extends Board {
         for (int i = 7; i >= 0; i--) {
             System.out.print((char)('1' + i) + "  ");
             for (int j = 0; j < 8; j++) {
-                Piece currentPiece = getPieceAt(new Location(i, j));
+                Piece currentPiece = getPieceAt(new Square(i, j));
                 if (currentPiece == null) {
                     System.out.print(".. ");
                 } else {
