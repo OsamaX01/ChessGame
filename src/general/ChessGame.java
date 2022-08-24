@@ -82,7 +82,7 @@ public class ChessGame {
             Location from = convertMoveToLocation(enteredMove.charAt(1), enteredMove.charAt(0));
             Location to = convertMoveToLocation(enteredMove.charAt(4), enteredMove.charAt(3));
 
-            if (inputValidator.isValidSquare(from, to) || inputValidator.isValidMovement(from, to)) {
+            if (!inputValidator.isValidSquare(from, to) || !inputValidator.isValidMovement(from, to)) {
                 continue;
             }
 
