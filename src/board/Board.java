@@ -7,6 +7,7 @@ import pieces.Piece;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 abstract public class Board {
     private final int row;
@@ -59,6 +60,10 @@ abstract public class Board {
     }
 
     public ArrayList<Piece> getPiecesWithColor(Player player) {
+        if (player == null) {
+            throw new IllegalArgumentException("NullPointer argument");
+        }
+
         ArrayList<Piece> result = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -68,6 +73,24 @@ abstract public class Board {
             }
         }
         return result;
+    }
+
+    public Piece getKing(Player player) {
+        if (player == null) {
+            throw new IllegalArgumentException("NullPointer argument");
+        }
+
+        Piece king = null;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (pieces[i][j] != null && Objects.equals(pieces[i][j].getName(), "King")) {
+                    if (player.equals(pieces[i][j].getOwner())) {
+                        king = pieces[i][j];
+                    }
+                }
+            }
+        }
+        return king;
     }
 
     public abstract void initializeBoardWithPieces(Player white, Player black);
