@@ -38,7 +38,7 @@ abstract public class Piece {
         this.square = square;
     }
 
-    public void setFirsMove(boolean isFirsMove) {
+    public void setIsFirsMove(boolean isFirsMove) {
         this.isFirsMove = isFirsMove;
     }
 

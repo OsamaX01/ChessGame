@@ -107,6 +107,7 @@ public class ChessGame {
         board.removePiece(currentPiece);
         currentPiece.setLocation(to);
         board.addPiece(currentPiece);
+        currentPiece.setIsFirsMove(false);
 
         whiteTurn = !whiteTurn;
     }
