@@ -19,7 +19,7 @@ public class Square extends Pair<Integer, Integer> {
         return getValue();
     }
 
-    static Square getSquare(char rank, char file) {
+    static public Square getSquare(char rank, char file) {
         if (!isLetter(file) || !isDigit(rank)) {
             throw new IllegalArgumentException("rank must be a letter and file must be a digit");
         }
