@@ -1,9 +1,11 @@
 package board;
 
+import general.Color;
 import general.Square;
 import general.Player;
 import pieces.Piece;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 abstract public class Board {
@@ -54,6 +56,18 @@ abstract public class Board {
             throw new NullPointerException();
         }
         return pieces[square.getRow()][square.getColumn()];
+    }
+
+    public ArrayList<Piece> getPiecesWithColor(Player player) {
+        ArrayList<Piece> result = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (pieces[i][j] != null && player.equals(pieces[i][j].getOwner())) {
+                    result.add(pieces[i][j]);
+                }
+            }
+        }
+        return result;
     }
 
     public abstract void initializeBoardWithPieces(Player white, Player black);
