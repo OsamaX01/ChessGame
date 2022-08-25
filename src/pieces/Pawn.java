@@ -2,8 +2,8 @@ package pieces;
 
 import general.Square;
 import general.Player;
-import movements.BasicOneForwardStrategy;
-import movements.TwoForwardAtStartStrategy;
+import handlers.LeftSquareDiagonallyHandler;
+import movements.*;
 
 public class Pawn extends Piece {
     public Pawn(Player owner, Square square) {
@@ -24,5 +24,7 @@ public class Pawn extends Piece {
     protected void setMovements() {
         addMovementStrategy(new BasicOneForwardStrategy());
         addMovementStrategy(new TwoForwardAtStartStrategy());
+        addMovementStrategy(new LeftSquareDiagonallyIfEnemyExistsStrategy());
+        addMovementStrategy(new RightSquareDiagonallyIfEnemyExistsStrategy());
     }
 }

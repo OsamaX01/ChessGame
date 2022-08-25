@@ -4,9 +4,9 @@ import board.Board;
 import general.Square;
 import handlers.*;
 
-public class LeftSquareDiagonallyIfEnemyExists extends BaseHandler {
+public class LeftSquareDiagonallyIfEnemyExistsStrategy implements MoveStrategy {
     @Override
-    protected boolean isValid(Board board, Square from, Square to) {
+    public boolean validateMove(Board board, Square from, Square to) {
         if (board == null || from == null || to == null) {
             throw new IllegalArgumentException("NullPointer argument");
         }
