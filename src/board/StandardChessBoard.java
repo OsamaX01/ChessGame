@@ -27,6 +27,9 @@ public class StandardChessBoard extends Board {
 
     @Override
     public void initializeBoardWithPieces(Player white, Player black) {
+        if (white == null || black == null) {
+            throw new IllegalArgumentException("Null argument");
+        }
         initializeOneBoardSideWithPieces(white, 0, 1);
         initializeOneBoardSideWithPieces(black, 7, 6);
     }

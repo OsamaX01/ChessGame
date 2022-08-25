@@ -36,7 +36,7 @@ abstract public class Board {
 
     public Board(int row, int column) {
         if (row <= 0 || column <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("row and column must be greater than zero");
         }
         this.row = row;
         this.column = column;

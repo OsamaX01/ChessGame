@@ -7,6 +7,10 @@ import handlers.*;
 public class KingStandardMoveStrategy implements MoveStrategy {
     @Override
     public boolean validateMove(Board board, Square from, Square to) {
+        if (board == null || from == null || to == null) {
+            throw new IllegalArgumentException("NullPointer argument");
+        }
+
         BaseHandler handler1 = new NullPointerHandler();
         BaseHandler handler2 = new ValidDestinationHandler();
         BaseHandler handler3 = new NotSameColorAtDestinationHandler();

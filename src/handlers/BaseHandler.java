@@ -16,6 +16,10 @@ public abstract class BaseHandler implements Handler {
 
     @Override
     public boolean canHandle(Board board, Square from, Square to) {
+        if (board == null || from == null || to == null) {
+            throw new IllegalArgumentException("NullPointer argument");
+        }
+
         if (isValid(board, from, to)) {
             return (nextHandler == null || nextHandler.canHandle(board, from, to));
         }

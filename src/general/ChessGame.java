@@ -7,6 +7,9 @@ import pieces.Piece;
 import javafx.util.Pair;
 import java.util.Scanner;
 
+import static java.lang.Character.isDigit;
+import static java.lang.Character.isLetter;
+
 public class ChessGame {
     private final StandardChessBoard board = new StandardChessBoard();
     private boolean whiteTurn = true;
@@ -14,6 +17,10 @@ public class ChessGame {
     private Player black;
 
     private Square convertMoveToLocation(char rank, char file) {
+        if (!isLetter(rank) || !isDigit(file)) {
+            throw new IllegalArgumentException("rank must be a letter and file must be a digit");
+        }
+
         int a = rank - '1';
         int b = file - 'A';
         return new Square(a, b);
@@ -23,6 +30,9 @@ public class ChessGame {
         class InputValidator {
             private final String input;
             public InputValidator(String input) {
+                if (input == null) {
+                    throw new IllegalArgumentException("Null argument");
+                }
                 this.input = input;
             }
 
@@ -38,6 +48,10 @@ public class ChessGame {
             }
 
             public boolean isValidSquare(Square from, Square to) {
+                if (from == null || to == null) {
+                    throw new IllegalArgumentException("Null argument");
+                }
+
                 Piece currentPiece = board.getPieceAt(from);
                 if (currentPiece == null) {
                     System.out.println("Invalid input : Empty square:");
@@ -50,8 +64,11 @@ public class ChessGame {
             }
 
             public boolean isValidMovement(Square from, Square to) {
-                Piece currentPiece = board.getPieceAt(from);
+                if (from == null || to == null) {
+                    throw new IllegalArgumentException("Null argument");
+                }
 
+                Piece currentPiece = board.getPieceAt(from);
                 boolean canMove = false;
                 for (MoveStrategy movement : currentPiece.getMovements()) {
                     if (movement.validateMove(board, from, to)) {
@@ -69,6 +86,9 @@ public class ChessGame {
         }
 
         Scanner scanner = new Scanner(System.in);
+        if (player == null) {
+            throw new IllegalArgumentException("Null argument");
+        }
 
         while (true) {
             System.out.println("Enter next move (" + player + ") :");
@@ -92,8 +112,7 @@ public class ChessGame {
 
     private void makeMove() {
         Player currentPlayer = whiteTurn ? white : black;
-        System.out.println(currentPlayer);
-        Pair<Square, Square> move =  getValidMove(currentPlayer);
+        Pair<Square, Square> move = getValidMove(currentPlayer);
         Square from = move.getKey();
         Square to = move.getValue();
 
