@@ -11,6 +11,29 @@ abstract public class Board {
     private final int column;
     Piece[][] pieces;
 
+    private void setPieceAt(Piece piece, Square square) {
+        if (square == null) {
+            throw new NullPointerException();
+        }
+        pieces[square.getRow()][square.getColumn()] = piece;
+    }
+
+    public void addPiece(Piece piece) {
+        if (getPieceAt(piece.getLocation()) != null) {
+            System.out.println("this location is occupied by another piece!");
+            return;
+        }
+        setPieceAt(piece, piece.getLocation());
+    }
+
+    public void removePiece(Piece piece) {
+        if (getPieceAt(piece.getLocation()) == null) {
+            System.out.println("this location has no piece!");
+            return;
+        }
+        setPieceAt(null, piece.getLocation());
+    }
+
     public Board(int row, int column) {
         if (row <= 0 || column <= 0) {
             throw new IllegalArgumentException();
@@ -33,29 +56,6 @@ abstract public class Board {
             throw new NullPointerException();
         }
         return pieces[square.getRow()][square.getColumn()];
-    }
-
-    private void setPieceAt(Piece piece, Square square) {
-        if (square == null) {
-            throw new NullPointerException();
-        }
-        pieces[square.getRow()][square.getColumn()] = piece;
-    }
-
-    public void addPiece(Piece piece) {
-        if (getPieceAt(piece.getLocation()) != null) {
-            System.out.println("this location is occupied by another piece!");
-            return;
-        }
-        setPieceAt(piece, piece.getLocation());
-    }
-
-    public void removePiece(Piece piece) {
-        if (getPieceAt(piece.getLocation()) == null) {
-            System.out.println("this location has no piece!");
-            return;
-        }
-        setPieceAt(null, piece.getLocation());
     }
 
     public abstract void initializeBoardWithPieces(Player white, Player black);

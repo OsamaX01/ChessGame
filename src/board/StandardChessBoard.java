@@ -24,14 +24,15 @@ public class StandardChessBoard extends Board {
             addPiece(new Pawn(player, new Square(pawnsRow, i)));
         }
     }
-    public StandardChessBoard() {
-        super(8, 8);
-    }
 
     @Override
     public void initializeBoardWithPieces(Player white, Player black) {
         initializeOneBoardSideWithPieces(white, 0, 1);
         initializeOneBoardSideWithPieces(black, 7, 6);
+    }
+
+    public StandardChessBoard() {
+        super(8, 8);
     }
 
     public void printBoard() {
