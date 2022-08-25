@@ -27,11 +27,9 @@ abstract public class Board {
     }
 
     public void removePiece(Piece piece) {
-        if (getPieceAt(piece.getLocation()) == null) {
-            System.out.println("this location has no piece!");
-            return;
+        if (getPieceAt(piece.getLocation()) != null) {
+            setPieceAt(null, piece.getLocation());
         }
-        setPieceAt(null, piece.getLocation());
     }
 
     public Board(int row, int column) {
