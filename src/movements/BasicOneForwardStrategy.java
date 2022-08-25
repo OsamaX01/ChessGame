@@ -12,7 +12,7 @@ public class BasicOneForwardStrategy implements MoveStrategy {
             throw new IllegalArgumentException("NullPointer argument");
         }
 
-        BaseHandler handler1 = new NullPointerHandler();
+        BaseHandler handler1 = new ValidStartLocationHandler();
         BaseHandler handler2 = new ValidDestinationHandler();
         BaseHandler handler3 = new OneMoveForwardHandler();
         BaseHandler handler4 = new EmptyDestinationHandler();

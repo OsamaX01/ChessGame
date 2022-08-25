@@ -11,7 +11,7 @@ public class HorizontalMoveStrategy implements MoveStrategy {
             throw new IllegalArgumentException("NullPointer argument");
         }
 
-        BaseHandler handler1 = new NullPointerHandler();
+        BaseHandler handler1 = new ValidStartLocationHandler();
         BaseHandler handler2 = new ValidDestinationHandler();
         BaseHandler handler3 = new NotSameColorAtDestinationHandler();
         BaseHandler handler4 = new HorizontalMoveHandler();
