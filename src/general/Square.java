@@ -2,6 +2,9 @@ package general;
 
 import javafx.util.Pair;
 
+import static java.lang.Character.isDigit;
+import static java.lang.Character.isLetter;
+
 public class Square extends Pair<Integer, Integer> {
 
     public Square(Integer row, Integer column) {
@@ -14,6 +17,16 @@ public class Square extends Pair<Integer, Integer> {
 
     public int getColumn() {
         return getValue();
+    }
+
+    static Square getSquare(char rank, char file) {
+        if (!isLetter(file) || !isDigit(rank)) {
+            throw new IllegalArgumentException("rank must be a letter and file must be a digit");
+        }
+
+        int a = rank - '1';
+        int b = file - 'A';
+        return new Square(a, b);
     }
 
     @Override
