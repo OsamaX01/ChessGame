@@ -10,7 +10,7 @@ import java.util.Objects;
 abstract public class Piece {
     private Player owner;
     private Square square;
-    private final boolean isFirsMove;
+    private boolean isFirsMove;
     private ArrayList<MoveStrategy> movements;
 
     public Piece(Player owner, Square square) {
@@ -36,6 +36,10 @@ abstract public class Piece {
             throw new NullPointerException();
         }
         this.square = square;
+    }
+
+    public void setFirsMove(boolean isFirsMove) {
+        this.isFirsMove = isFirsMove;
     }
 
     public Player getOwner() {
