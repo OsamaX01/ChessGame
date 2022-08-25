@@ -17,7 +17,7 @@ public class ChessGame {
     private Player black;
 
     private Square convertMoveToLocation(char rank, char file) {
-        if (!isLetter(rank) || !isDigit(file)) {
+        if (!isLetter(file) || !isDigit(rank)) {
             throw new IllegalArgumentException("rank must be a letter and file must be a digit");
         }
 
