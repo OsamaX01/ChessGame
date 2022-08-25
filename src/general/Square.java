@@ -18,7 +18,7 @@ public class Square extends Pair<Integer, Integer> {
 
     @Override
     public String toString() {
-        return "Square : " + (getRow() + 1) + ", " + (getColumn() + 1) + " ";
+        return "Square : " + (char)(getColumn() + 'A') + ", " + (getRow() + 1) + " ";
     }
 
     @Override
