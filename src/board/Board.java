@@ -1,8 +1,8 @@
 package board;
 
-import general.Color;
-import general.Square;
-import general.Player;
+import generalComponents.Color;
+import generalComponents.Square;
+import generalComponents.Player;
 import pieces.Piece;
 
 import java.util.ArrayList;
@@ -22,6 +22,10 @@ abstract public class Board {
     }
 
     public void addPiece(Piece piece) {
+        if (piece == null) {
+            System.out.println("Illegal argument : Piece is null");
+            return;
+        }
         if (getPieceAt(piece.getLocation()) != null) {
             System.out.println("this location is occupied by another piece!");
             return;
@@ -30,7 +34,7 @@ abstract public class Board {
     }
 
     public void removePiece(Piece piece) {
-        if (getPieceAt(piece.getLocation()) != null) {
+        if (piece != null && getPieceAt(piece.getLocation()) != null) {
             setPieceAt(null, piece.getLocation());
         }
     }
@@ -59,15 +63,15 @@ abstract public class Board {
         return pieces[square.getRow()][square.getColumn()];
     }
 
-    public ArrayList<Piece> getPiecesWithColor(Player player) {
-        if (player == null) {
+    public ArrayList<Piece> getPiecesWithColor(Color color) {
+        if (color == null) {
             throw new IllegalArgumentException("NullPointer argument");
         }
 
         ArrayList<Piece> result = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (pieces[i][j] != null && player.equals(pieces[i][j].getOwner())) {
+                if (pieces[i][j] != null && color == pieces[i][j].getOwner().getColor()) {
                     result.add(pieces[i][j]);
                 }
             }
@@ -75,8 +79,8 @@ abstract public class Board {
         return result;
     }
 
-    public Piece getKing(Player player) {
-        if (player == null) {
+    public Piece getKing(Color color) {
+        if (color == null) {
             throw new IllegalArgumentException("NullPointer argument");
         }
 
@@ -84,7 +88,7 @@ abstract public class Board {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (pieces[i][j] != null && Objects.equals(pieces[i][j].getName(), "King")) {
-                    if (player.equals(pieces[i][j].getOwner())) {
+                    if (color == pieces[i][j].getOwner().getColor()) {
                         king = pieces[i][j];
                     }
                 }

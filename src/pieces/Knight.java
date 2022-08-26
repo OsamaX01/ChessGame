@@ -1,7 +1,7 @@
 package pieces;
 
-import general.Square;
-import general.Player;
+import generalComponents.Square;
+import generalComponents.Player;
 import movements.KnightStandardStrategy;
 
 public class Knight extends Piece {

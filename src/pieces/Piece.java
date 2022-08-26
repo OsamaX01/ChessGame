@@ -1,7 +1,7 @@
 package pieces;
 
-import general.Square;
-import general.Player;
+import generalComponents.Square;
+import generalComponents.Player;
 import movements.MoveStrategy;
 
 import java.util.ArrayList;

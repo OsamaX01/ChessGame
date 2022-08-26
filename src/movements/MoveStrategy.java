@@ -1,7 +1,7 @@
 package movements;
 
 import board.Board;
-import general.Square;
+import generalComponents.Square;
 
 public interface MoveStrategy {
     boolean validateMove(Board board, Square from, Square to);

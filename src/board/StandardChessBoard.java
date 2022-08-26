@@ -1,8 +1,8 @@
 package board;
 
-import general.Color;
-import general.Square;
-import general.Player;
+import generalComponents.Color;
+import generalComponents.Square;
+import generalComponents.Player;
 import pieces.*;
 
 public class StandardChessBoard extends Board {

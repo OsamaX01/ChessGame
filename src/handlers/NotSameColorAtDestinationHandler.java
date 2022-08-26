@@ -1,7 +1,7 @@
 package handlers;
 
 import board.Board;
-import general.Square;
+import generalComponents.Square;
 import pieces.Piece;
 
 public class NotSameColorAtDestinationHandler extends BaseHandler {

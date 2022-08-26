@@ -1,7 +1,7 @@
 package handlers;
 
 import board.Board;
-import general.Square;
+import generalComponents.Square;
 
 public class LeftToRightDiagonalsHandler extends BaseHandler {
 

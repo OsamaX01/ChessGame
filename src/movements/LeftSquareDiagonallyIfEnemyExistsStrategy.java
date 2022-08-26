@@ -1,7 +1,7 @@
 package movements;
 
 import board.Board;
-import general.Square;
+import generalComponents.Square;
 import handlers.*;
 
 public class LeftSquareDiagonallyIfEnemyExistsStrategy implements MoveStrategy {

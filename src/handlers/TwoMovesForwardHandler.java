@@ -1,8 +1,8 @@
 package handlers;
 
 import board.Board;
-import general.Color;
-import general.Square;
+import generalComponents.Color;
+import generalComponents.Square;
 
 public class TwoMovesForwardHandler extends BaseHandler {
     @Override

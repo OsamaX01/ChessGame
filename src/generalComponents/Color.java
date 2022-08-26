@@ -1,4 +1,4 @@
-package general;
+package generalComponents;
 
 public enum Color {
     WHITE,

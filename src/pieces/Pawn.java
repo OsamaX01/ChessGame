@@ -1,8 +1,7 @@
 package pieces;
 
-import general.Square;
-import general.Player;
-import handlers.LeftSquareDiagonallyHandler;
+import generalComponents.Square;
+import generalComponents.Player;
 import movements.*;
 
 public class Pawn extends Piece {

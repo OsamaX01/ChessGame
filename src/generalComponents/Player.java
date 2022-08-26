@@ -1,4 +1,4 @@
-package general;
+package generalComponents;
 
 import java.util.Objects;
 
