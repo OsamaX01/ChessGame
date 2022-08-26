@@ -11,15 +11,15 @@ import pieces.Piece;
 import java.util.ArrayList;
 
 public class GameStatesChecker {
-    private boolean canKingMoveToAdjacentSquares(StandardChessBoard board, Player player) {
-        if (board == null || player == null) {
+    private boolean canKingMoveToAdjacentSquares(StandardChessBoard board, Player kingOwner) {
+        if (board == null || kingOwner == null) {
             throw new IllegalArgumentException("NullPointer Argument");
         }
 
         int[] x = {1, -1, 0, 0, 1, -1, 1, -1};
         int[] y = {0, 0, 1, -1, 1, 1, -1, -1};
 
-        King king = (King) board.getKing(player.getColor());
+        King king = (King) board.getKing(kingOwner.getColor());
         ArrayList<Square> kingAdjacentSquares = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             Square currentSquare = new Square(king.getLocation().getRow() + x[i], king.getLocation().getColumn() + y[i]);
@@ -34,7 +34,7 @@ public class GameStatesChecker {
 
         for (Square square : kingAdjacentSquares) {
             boolean canReachThisSquare = false;
-            Color opponentColor = (player.getColor() == Color.WHITE ? Color.BLACK : Color.WHITE);
+            Color opponentColor = (kingOwner.getColor() == Color.WHITE ? Color.BLACK : Color.WHITE);
 
             checkReachability:
             for (Piece piece : board.getPiecesWithColor(opponentColor)) {
@@ -82,13 +82,13 @@ public class GameStatesChecker {
         return result;
     }
 
-    public boolean isCheck(StandardChessBoard board, Player player) {
-        if (board == null || player == null) {
+    public boolean isCheck(StandardChessBoard board, Player kingOwner) {
+        if (board == null || kingOwner == null) {
             throw new IllegalArgumentException("NullPointer Argument");
         }
 
-        King king = (King) board.getKing(player.getColor());
-        Color opponentColor = (player.getColor() == Color.WHITE ? Color.BLACK : Color.WHITE);
+        King king = (King) board.getKing(kingOwner.getColor());
+        Color opponentColor = (kingOwner.getColor() == Color.WHITE ? Color.BLACK : Color.WHITE);
         for (Piece piece : board.getPiecesWithColor(opponentColor)) {
             for (MoveStrategy moveStrategy : piece.getMovements()) {
                 if (moveStrategy.validateMove(board, piece.getLocation(), king.getLocation())) {
@@ -100,14 +100,16 @@ public class GameStatesChecker {
         return  false;
     }
 
-    public boolean isCheckMate(StandardChessBoard board, Player player) {
-        if (board == null || player == null) {
+    public boolean isCheckMate(StandardChessBoard board, Player kingOwner) {
+        if (board == null || kingOwner == null) {
             throw new IllegalArgumentException("NullPointer Argument");
         }
 
-        if (canKingMoveToAdjacentSquares(board, player)) {
+        if (canKingMoveToAdjacentSquares(board, kingOwner)) {
             return false;
         }
+
+
 
         return true;
     }
