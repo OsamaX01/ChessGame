@@ -14,6 +14,7 @@ public class ChessGame {
     private final StandardChessBoard board = new StandardChessBoard();
     private final GameStatesChecker gameStatesChecker = new GameStatesChecker();
     private boolean whiteTurn = true;
+    private int numberOfMoves = 0;
     private Player white;
     private Player black;
 
@@ -59,6 +60,7 @@ public class ChessGame {
 
         board.move(from, to);
         whiteTurn = !whiteTurn;
+        numberOfMoves++;
         return board.getPieceAt(to);
     }
 
@@ -75,6 +77,9 @@ public class ChessGame {
                     break;
                 }
                 System.out.println("King is in check !");
+            } else if (gameStatesChecker.isDraw(board, numberOfMoves)) {
+                System.out.println("Draw !!");
+                break;
             }
 
             board.printBoard();

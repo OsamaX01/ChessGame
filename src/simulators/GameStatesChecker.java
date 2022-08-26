@@ -136,4 +136,8 @@ public class GameStatesChecker {
 
         return true;
     }
+
+    public boolean isDraw(StandardChessBoard board, int moves) {
+        return (moves >= 100 || (board.getPiecesWithColor(Color.WHITE).size() == 1 && board.getPiecesWithColor(Color.BLACK).size() == 1));
+    }
 }
