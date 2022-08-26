@@ -4,7 +4,6 @@ import board.StandardChessBoard;
 import generalComponents.Color;
 import generalComponents.Player;
 import generalComponents.Square;
-import pieces.Piece;
 
 import javafx.util.Pair;
 import java.util.Scanner;
@@ -52,17 +51,10 @@ public class ChessGame {
         Square from = move.getKey();
         Square to = move.getValue();
 
-        Piece atDestinationPiece = board.getPieceAt(to);
-        if (atDestinationPiece != null) {
-            System.out.println(currentPlayer + " killed " + atDestinationPiece);
-            board.removePiece(atDestinationPiece);
+        if (board.getPieceAt(to) != null) {
+            System.out.println(currentPlayer + " killed " + board.getPieceAt(to));
         }
-
-        Piece currentPiece = board.getPieceAt(from);
-        board.removePiece(currentPiece);
-        currentPiece.setLocation(to);
-        board.addPiece(currentPiece);
-        currentPiece.setIsFirsMove(false);
+        board.move(from, to);
 
         whiteTurn = !whiteTurn;
     }
@@ -76,6 +68,7 @@ public class ChessGame {
 
             if (gameStatesChecker.isCheck(board, opponentPlayer)) {
                 if (gameStatesChecker.isCheckMate(board, opponentPlayer)) {
+                    System.out.println("Check Mate : Game is done\nWinner is " + currentPlayer);
                     break;
                 }
                 System.out.println("King is in check !");

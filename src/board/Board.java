@@ -97,6 +97,23 @@ abstract public class Board {
         return king;
     }
 
+    public void move(Square from, Square to) {
+        if (from == null || to == null) {
+            throw new IllegalArgumentException("NullPointer Argument");
+        }
+
+        Piece atDestinationPiece = getPieceAt(to);
+        if (atDestinationPiece != null) {
+            removePiece(atDestinationPiece);
+        }
+
+        Piece currentPiece = getPieceAt(from);
+        removePiece(currentPiece);
+        currentPiece.setLocation(to);
+        addPiece(currentPiece);
+        currentPiece.setIsFirsMove(false);
+    }
+
     public abstract void initializeBoardWithPieces(Player white, Player black);
 
     @Override
