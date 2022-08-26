@@ -4,7 +4,6 @@ import board.Board;
 import generalComponents.Square;
 
 import handlers.*;
-import specialMoves.Promotion;
 
 public class BasicOneForwardStrategy implements MoveStrategy {
     @Override
@@ -21,15 +20,6 @@ public class BasicOneForwardStrategy implements MoveStrategy {
         handler2.setNext(handler3);
         handler3.setNext(handler4);
 
-        boolean isHandled = handler1.canHandle(board, from, to);
-
-        if (isHandled) {
-            BaseHandler handler5 = new PromotionHandler();
-            if (handler5.canHandle(board, from, to)) {
-                Promotion.promote(board.getPieceAt(from));
-            }
-        }
-
-        return isHandled;
+        return handler1.canHandle(board, from, to);
     }
 }
