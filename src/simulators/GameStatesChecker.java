@@ -38,6 +38,10 @@ public class GameStatesChecker {
 
             checkReachability:
             for (Piece piece : board.getPiecesWithColor(opponentColor)) {
+                if (piece.getLocation().equals(square)) {
+                    continue;
+                }
+
                 for (MoveStrategy moveStrategy : piece.getMovements()) {
                     if (moveStrategy.validateMove(board, piece.getLocation(), square)) {
                         canReachThisSquare = true;
