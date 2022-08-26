@@ -54,6 +54,29 @@ public class GameStatesChecker {
         return false;
     }
 
+    private boolean canCaptureOrBlockCheckingPiece(StandardChessBoard board, Player kingOwner, Piece checkingPiece) {
+        King king = (King) board.getKing(kingOwner.getColor());
+        for (Square square : SquaresToBeBlocked.getSquaresBetweenKingAndCheckingPiece(board, king.getLocation(), checkingPiece.getLocation())) {
+
+            boolean canBlock = false;
+            loopCanBlock:
+            for (Piece piece : board.getPiecesWithColor(kingOwner.getColor())) {
+                for (MoveStrategy moveStrategy : piece.getMovements()) {
+                    if (moveStrategy.validateMove(board, piece.getLocation(), square)) {
+                        canBlock = true;
+                        break loopCanBlock;
+                    }
+                }
+            }
+
+            if (canBlock) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public boolean isStillInCheck(StandardChessBoard board, Square from, Square to) {
         if (board == null || from == null || to == null) {
             throw new IllegalArgumentException("NullPointer argument");
@@ -100,16 +123,16 @@ public class GameStatesChecker {
         return  false;
     }
 
-    public boolean isCheckMate(StandardChessBoard board, Player kingOwner) {
+    public boolean isCheckMate(StandardChessBoard board, Player kingOwner, Piece checkingPiece) {
         if (board == null || kingOwner == null) {
             throw new IllegalArgumentException("NullPointer Argument");
         }
 
         if (canKingMoveToAdjacentSquares(board, kingOwner)) {
             return false;
+        } else if (canCaptureOrBlockCheckingPiece(board, kingOwner, checkingPiece)) {
+            return false;
         }
-
-
 
         return true;
     }

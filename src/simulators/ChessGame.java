@@ -6,6 +6,8 @@ import generalComponents.Player;
 import generalComponents.Square;
 
 import javafx.util.Pair;
+import pieces.Piece;
+
 import java.util.Scanner;
 
 public class ChessGame {
@@ -46,7 +48,7 @@ public class ChessGame {
         }
     }
 
-    private void makeMove(Player currentPlayer) {
+    Piece makeMove(Player currentPlayer) {
         Pair<Square, Square> move = getValidMove(currentPlayer);
         Square from = move.getKey();
         Square to = move.getValue();
@@ -54,9 +56,10 @@ public class ChessGame {
         if (board.getPieceAt(to) != null) {
             System.out.println(currentPlayer + " killed " + board.getPieceAt(to));
         }
-        board.move(from, to);
 
+        board.move(from, to);
         whiteTurn = !whiteTurn;
+        return board.getPieceAt(to);
     }
 
     private void simulateGame() {
@@ -64,10 +67,10 @@ public class ChessGame {
         while (true) {
             Player currentPlayer = whiteTurn ? white : black;
             Player opponentPlayer = whiteTurn ? black : white;
-            makeMove(currentPlayer);
+            Piece moved = makeMove(currentPlayer);
 
             if (gameStatesChecker.isCheck(board, opponentPlayer)) {
-                if (gameStatesChecker.isCheckMate(board, opponentPlayer)) {
+                if (gameStatesChecker.isCheckMate(board, opponentPlayer, moved)) {
                     System.out.println("Check Mate : Game is done\nWinner is " + currentPlayer);
                     break;
                 }
