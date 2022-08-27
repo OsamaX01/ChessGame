@@ -12,7 +12,6 @@ import java.util.Scanner;
 
 public class ChessGame {
     private final StandardChessBoard board = new StandardChessBoard();
-    private final GameStatesChecker gameStatesChecker = new GameStatesChecker();
     private boolean whiteTurn = true;
     private int numberOfMoves = 0;
     private Player white;
@@ -40,7 +39,7 @@ public class ChessGame {
                 continue;
             }
 
-            if (gameStatesChecker.isStillInCheck(board, from, to)) {
+            if (GameStatesChecker.isStillInCheck(board, from, to)) {
                 System.out.println("Your king is still in danger, Please try again!");
                 continue;
             }
@@ -71,13 +70,13 @@ public class ChessGame {
             Player opponentPlayer = whiteTurn ? black : white;
             Piece moved = makeMove(currentPlayer);
 
-            if (gameStatesChecker.isCheck(board, opponentPlayer)) {
-                if (gameStatesChecker.isCheckMate(board, opponentPlayer, moved)) {
+            if (GameStatesChecker.isCheck(board, opponentPlayer)) {
+                if (GameStatesChecker.isCheckMate(board, opponentPlayer, moved)) {
                     System.out.println("Check Mate : Game is done\nWinner is " + currentPlayer);
                     break;
                 }
                 System.out.println("King is in check !");
-            } else if (gameStatesChecker.isDraw(board, numberOfMoves)) {
+            } else if (GameStatesChecker.isDraw(board, numberOfMoves)) {
                 System.out.println("Draw !!");
                 break;
             }

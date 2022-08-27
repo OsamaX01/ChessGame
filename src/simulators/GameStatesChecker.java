@@ -11,7 +11,7 @@ import pieces.Piece;
 import java.util.ArrayList;
 
 public class GameStatesChecker {
-    private boolean canKingMoveToAdjacentSquares(StandardChessBoard board, Player kingOwner) {
+    private static boolean canKingMoveToAdjacentSquares(StandardChessBoard board, Player kingOwner) {
         if (board == null || kingOwner == null) {
             throw new IllegalArgumentException("NullPointer Argument");
         }
@@ -58,7 +58,7 @@ public class GameStatesChecker {
         return false;
     }
 
-    private boolean canCaptureOrBlockCheckingPiece(StandardChessBoard board, Player kingOwner, Piece checkingPiece) {
+    private static boolean canCaptureOrBlockCheckingPiece(StandardChessBoard board, Player kingOwner, Piece checkingPiece) {
         King king = (King) board.getKing(kingOwner.getColor());
         for (Square square : SquaresBetween.getSquaresBetween(board, king.getLocation(), checkingPiece.getLocation())) {
 
@@ -81,7 +81,7 @@ public class GameStatesChecker {
         return false;
     }
 
-    public boolean isStillInCheck(StandardChessBoard board, Square from, Square to) {
+    public static boolean isStillInCheck(StandardChessBoard board, Square from, Square to) {
         if (board == null || from == null || to == null) {
             throw new IllegalArgumentException("NullPointer argument");
         }
@@ -109,7 +109,7 @@ public class GameStatesChecker {
         return result;
     }
 
-    public boolean isCheck(StandardChessBoard board, Player kingOwner) {
+    public static boolean isCheck(StandardChessBoard board, Player kingOwner) {
         if (board == null || kingOwner == null) {
             throw new IllegalArgumentException("NullPointer Argument");
         }
@@ -127,7 +127,7 @@ public class GameStatesChecker {
         return  false;
     }
 
-    public boolean isCheckMate(StandardChessBoard board, Player kingOwner, Piece checkingPiece) {
+    public static boolean isCheckMate(StandardChessBoard board, Player kingOwner, Piece checkingPiece) {
         if (board == null || kingOwner == null) {
             throw new IllegalArgumentException("NullPointer Argument");
         }
@@ -141,7 +141,7 @@ public class GameStatesChecker {
         return true;
     }
 
-    public boolean isDraw(StandardChessBoard board, int moves) {
+    public static boolean isDraw(StandardChessBoard board, int moves) {
         if (board == null) {
             throw new IllegalArgumentException("NullPointer argument");
         }
