@@ -2,6 +2,7 @@ package pieces;
 
 import generalComponents.Square;
 import generalComponents.Player;
+import movements.CastlingMoveStrategy;
 import movements.KingStandardMoveStrategy;
 
 public class King extends Piece {
@@ -22,5 +23,6 @@ public class King extends Piece {
     @Override
     protected void setMovements() {
         addMovementStrategy(new KingStandardMoveStrategy());
+        addMovementStrategy(new CastlingMoveStrategy());
     }
 }

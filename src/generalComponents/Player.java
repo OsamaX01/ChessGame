@@ -6,6 +6,8 @@ public class Player {
     private String name;
     private Color color;
 
+    private boolean hasCastled = false;
+
     public Player(String name, Color color) {
         setName(name);
         setColor(color);
@@ -31,6 +33,14 @@ public class Player {
             throw new NullPointerException();
         }
         this.color = color;
+    }
+
+    public boolean hasCastled() {
+        return hasCastled;
+    }
+
+    public void setHasCastled(boolean hasCastled) {
+        this.hasCastled = hasCastled;
     }
 
     @Override

@@ -60,7 +60,7 @@ public class GameStatesChecker {
 
     private boolean canCaptureOrBlockCheckingPiece(StandardChessBoard board, Player kingOwner, Piece checkingPiece) {
         King king = (King) board.getKing(kingOwner.getColor());
-        for (Square square : SquaresToBeBlocked.getSquaresBetweenKingAndCheckingPiece(board, king.getLocation(), checkingPiece.getLocation())) {
+        for (Square square : SquaresBetween.getSquaresBetween(board, king.getLocation(), checkingPiece.getLocation())) {
 
             boolean canBlock = false;
             loopCanBlock:

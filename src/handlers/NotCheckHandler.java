@@ -21,7 +21,6 @@ public class NotCheckHandler extends BaseHandler {
             }
         }
 
-        System.out.println("Im here");
         return true;
     }
 }

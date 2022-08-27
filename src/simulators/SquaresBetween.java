@@ -5,16 +5,16 @@ import generalComponents.Square;
 
 import java.util.ArrayList;
 
-public class SquaresToBeBlocked {
-    public static ArrayList<Square> getSquaresBetweenKingAndCheckingPiece(StandardChessBoard board, Square kingSquare, Square checkingSquare) {
+public class SquaresBetween {
+    public static ArrayList<Square> getSquaresBetween(StandardChessBoard board, Square first, Square second) {
         ArrayList<Square> squares = new ArrayList<>();
-        int fromRow = kingSquare.getRow();
-        int fromColumn = kingSquare.getColumn();
+        int fromRow = first.getRow();
+        int fromColumn = first.getColumn();
         do {
-            fromRow += getCloser(fromRow, checkingSquare.getRow());
-            fromColumn += getCloser(fromColumn, checkingSquare.getColumn());
+            fromRow += getCloser(fromRow, second.getRow());
+            fromColumn += getCloser(fromColumn, second.getColumn());
             squares.add(new Square(fromRow, fromColumn));
-        } while (fromRow != checkingSquare.getRow() || fromColumn != checkingSquare.getColumn());
+        } while (fromRow != second.getRow() || fromColumn != second.getColumn());
 
         return squares;
     }
