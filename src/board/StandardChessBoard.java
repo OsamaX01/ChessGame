@@ -8,20 +8,20 @@ import pieces.*;
 public class StandardChessBoard extends Board {
 
     private void initializeOneBoardSideWithPieces(Player player, int mainRow, int pawnsRow) {
-        addPiece(new Rock(player, new Square(mainRow, 0)));
-        addPiece(new Rock(player, new Square(mainRow, 7)));
+        addPiece(PieceFactory.createPiece("Rock", player, new Square(mainRow, 0)));
+        addPiece(PieceFactory.createPiece("Rock", player, new Square(mainRow, 7)));
 
-        addPiece(new Knight(player, new Square(mainRow, 1)));
-        addPiece(new Knight(player, new Square(mainRow, 6)));
+        addPiece(PieceFactory.createPiece("Knight", player, new Square(mainRow, 1)));
+        addPiece(PieceFactory.createPiece("Knight", player, new Square(mainRow, 6)));
 
-        addPiece(new Bishop(player, new Square(mainRow, 2)));
-        addPiece(new Bishop(player, new Square(mainRow, 5)));
+        addPiece(PieceFactory.createPiece("Bishop", player, new Square(mainRow, 2)));
+        addPiece(PieceFactory.createPiece("Bishop", player, new Square(mainRow, 5)));
 
-        addPiece(new Queen(player, new Square(mainRow, 3)));
-        addPiece(new King(player, new Square(mainRow, 4)));
+        addPiece(PieceFactory.createPiece("Queen", player, new Square(mainRow, 3)));
+        addPiece(PieceFactory.createPiece("King", player, new Square(mainRow, 4)));
 
         for (int i = 0; i < getColumn(); i++) {
-            addPiece(new Pawn(player, new Square(pawnsRow, i)));
+            addPiece(PieceFactory.createPiece("Pawn", player, new Square(pawnsRow, i)));
         }
     }
 

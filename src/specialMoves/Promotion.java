@@ -21,25 +21,9 @@ public class Promotion {
         while (!isPromoted) {
             System.out.println("Please Enter the name of piece you want to promote your " + piece + "\nNote: Name starts with capital letter");
             String newPieceName = scanner.nextLine();
-
-            if (Objects.equals(newPieceName, "Queen")) {
-                piece = new Queen(piece.getOwner(), piece.getLocation());
+            if (PieceFactory.isValidPieceNameToCreate(newPieceName) && !newPieceName.equals("King") && !newPieceName.equals("Pawn")) {
+                piece = PieceFactory.createPiece(newPieceName, player, location);
                 isPromoted = true;
-            }
-            else if (Objects.equals(newPieceName, "Rock")) {
-                piece = new Rock(piece.getOwner(), piece.getLocation());
-                isPromoted = true;
-            }
-            else if (Objects.equals(newPieceName, "Bishop")) {
-                piece = new Bishop(piece.getOwner(), piece.getLocation());
-                isPromoted = true;
-            }
-            else if (Objects.equals(newPieceName, "Knight")) {
-                piece = new Knight(piece.getOwner(), piece.getLocation());
-                isPromoted = true;
-            }
-            else {
-                System.out.println("Invalid piece: Please try again");
             }
         }
     }
