@@ -10,6 +10,10 @@ public class OneForwardWithPromotionStrategy extends BasicOneForwardStrategy {
 
     @Override
     public boolean validateMove(Board board, Square from, Square to) {
+        if (board == null || from == null || to == null) {
+            throw new IllegalArgumentException("NullPointer argument");
+        }
+
         boolean isHandled = super.validateMove(board, from, to);
 
         if (isHandled) {

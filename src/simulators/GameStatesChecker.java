@@ -142,6 +142,9 @@ public class GameStatesChecker {
     }
 
     public boolean isDraw(StandardChessBoard board, int moves) {
+        if (board == null) {
+            throw new IllegalArgumentException("NullPointer argument");
+        }
         return (moves >= 100 || (board.getPiecesWithColor(Color.WHITE).size() == 1 && board.getPiecesWithColor(Color.BLACK).size() == 1));
     }
 }

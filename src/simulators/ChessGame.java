@@ -7,7 +7,6 @@ import generalComponents.Square;
 
 import javafx.util.Pair;
 import pieces.Piece;
-
 import java.util.Scanner;
 
 public class ChessGame {

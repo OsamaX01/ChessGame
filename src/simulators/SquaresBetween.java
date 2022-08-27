@@ -7,6 +7,10 @@ import java.util.ArrayList;
 
 public class SquaresBetween {
     public static ArrayList<Square> getSquaresBetween(StandardChessBoard board, Square first, Square second) {
+        if (board == null || first == null || second == null) {
+            throw new IllegalArgumentException("NullPointer argument");
+        }
+
         ArrayList<Square> squares = new ArrayList<>();
         int fromRow = first.getRow();
         int fromColumn = first.getColumn();

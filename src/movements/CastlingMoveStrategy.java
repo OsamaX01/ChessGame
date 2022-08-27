@@ -13,6 +13,10 @@ import java.util.Objects;
 public class CastlingMoveStrategy implements MoveStrategy {
     @Override
     public boolean validateMove(Board board, Square from, Square to) {
+        if (board == null || from == null || to == null) {
+            throw new IllegalArgumentException();
+        }
+
         Square rockPlace = to.getColumn() < from.getColumn() ? new Square(0, 0) : new Square(0, 7);
         if (board.getPieceAt(rockPlace) == null || !Objects.equals(board.getPieceAt(rockPlace).getName(), "Rock")) {
             return  false;
