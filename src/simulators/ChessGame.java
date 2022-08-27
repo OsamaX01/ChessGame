@@ -6,6 +6,7 @@ import generalComponents.Player;
 import generalComponents.Square;
 
 import javafx.util.Pair;
+import pieces.Pawn;
 import pieces.Piece;
 import java.util.Scanner;
 
@@ -94,6 +95,9 @@ public class ChessGame {
         white = new Player(firstName, Color.WHITE);
         black = new Player(secondName, Color.BLACK);
         board.initializeBoardWithPieces(white, black);
+        board.removePiece(board.getPieceAt(new Square(6, 1)));
+        board.removePiece(board.getPieceAt(new Square(7, 1)));
+        board.addPiece(new Pawn(white, new Square(6, 1)));
         simulateGame();
     }
 }

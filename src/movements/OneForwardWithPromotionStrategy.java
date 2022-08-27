@@ -19,7 +19,7 @@ public class OneForwardWithPromotionStrategy extends BasicOneForwardStrategy {
         if (isHandled) {
             BaseHandler handler5 = new PromotionHandler();
             if (handler5.canHandle(board, from, to)) {
-                Promotion.promote(board.getPieceAt(from));
+                Promotion.promote(board, from);
             }
         }
 
