@@ -5,6 +5,18 @@ import generalComponents.Square;
 import handlers.*;
 
 public class VerticalMoveStrategy implements MoveStrategy {
+    private static MoveStrategy instance;
+
+    private VerticalMoveStrategy() { }
+
+    public static MoveStrategy getInstance() {
+        if (instance == null) {
+            instance = new VerticalMoveStrategy();
+        }
+        return instance;
+    }
+
+
     @Override
     public boolean validateMove(Board board, Square from, Square to) {
         if (board == null || from == null || to == null) {

@@ -5,6 +5,18 @@ import generalComponents.Square;
 import handlers.*;
 
 public class TwoForwardAtStartStrategy implements MoveStrategy {
+    private static MoveStrategy instance;
+
+    private TwoForwardAtStartStrategy() { }
+
+    public static MoveStrategy getInstance() {
+        if (instance == null) {
+            instance = new TwoForwardAtStartStrategy();
+        }
+        return instance;
+    }
+
+
     @Override
     public boolean validateMove(Board board, Square from, Square to) {
         if (board == null || from == null || to == null) {

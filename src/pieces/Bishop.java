@@ -22,7 +22,7 @@ public class Bishop extends Piece {
 
     @Override
     protected void setMovements() {
-        addMovementStrategy(new LeftToRightDiagonalsStrategy());
-        addMovementStrategy(new RightToLeftDiagonalsStrategy());
+        addMovementStrategy(LeftToRightDiagonalsStrategy.getInstance());
+        addMovementStrategy(RightToLeftDiagonalsStrategy.getInstance());
     }
 }

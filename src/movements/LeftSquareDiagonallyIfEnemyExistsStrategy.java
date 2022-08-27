@@ -5,6 +5,17 @@ import generalComponents.Square;
 import handlers.*;
 
 public class LeftSquareDiagonallyIfEnemyExistsStrategy implements MoveStrategy {
+    private static MoveStrategy instance;
+
+    private LeftSquareDiagonallyIfEnemyExistsStrategy() { }
+
+    public static MoveStrategy getInstance() {
+        if (instance == null) {
+            instance = new LeftSquareDiagonallyIfEnemyExistsStrategy();
+        }
+        return instance;
+    }
+
     @Override
     public boolean validateMove(Board board, Square from, Square to) {
         if (board == null || from == null || to == null) {

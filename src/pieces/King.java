@@ -22,7 +22,7 @@ public class King extends Piece {
 
     @Override
     protected void setMovements() {
-        addMovementStrategy(new KingStandardMoveStrategy());
-        addMovementStrategy(new CastlingMoveStrategy());
+        addMovementStrategy(KingStandardMoveStrategy.getInstance());
+        addMovementStrategy(CastlingMoveStrategy.getInstance());
     }
 }

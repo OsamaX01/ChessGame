@@ -22,7 +22,7 @@ public class Rock extends Piece {
 
     @Override
     protected void setMovements() {
-         addMovementStrategy(new VerticalMoveStrategy());
-         addMovementStrategy(new HorizontalMoveStrategy());
+         addMovementStrategy(VerticalMoveStrategy.getInstance());
+         addMovementStrategy(HorizontalMoveStrategy.getInstance());
     }
 }

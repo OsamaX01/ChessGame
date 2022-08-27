@@ -21,9 +21,9 @@ public class Pawn extends Piece {
 
     @Override
     protected void setMovements() {
-        addMovementStrategy(new OneForwardWithPromotionStrategy());
-        addMovementStrategy(new TwoForwardAtStartStrategy());
-        addMovementStrategy(new LeftSquareDiagonallyIfEnemyExistsStrategy());
-        addMovementStrategy(new RightSquareDiagonallyIfEnemyExistsStrategy());
+        addMovementStrategy(OneForwardWithPromotionStrategy.getInstance());
+        addMovementStrategy(TwoForwardAtStartStrategy.getInstance());
+        addMovementStrategy(LeftSquareDiagonallyIfEnemyExistsStrategy.getInstance());
+        addMovementStrategy(RightSquareDiagonallyIfEnemyExistsStrategy.getInstance());
     }
 }

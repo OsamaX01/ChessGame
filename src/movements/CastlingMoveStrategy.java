@@ -11,6 +11,17 @@ import java.util.Objects;
 
 
 public class CastlingMoveStrategy implements MoveStrategy {
+    private static MoveStrategy instance;
+
+    private CastlingMoveStrategy() { }
+
+    public static MoveStrategy getInstance() {
+        if (instance == null) {
+            instance = new CastlingMoveStrategy();
+        }
+        return instance;
+    }
+
     @Override
     public boolean validateMove(Board board, Square from, Square to) {
         if (board == null || from == null || to == null) {

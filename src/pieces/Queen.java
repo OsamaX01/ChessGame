@@ -24,9 +24,9 @@ public class Queen extends Piece {
 
     @Override
     protected void setMovements() {
-        addMovementStrategy(new VerticalMoveStrategy());
-        addMovementStrategy(new HorizontalMoveStrategy());
-        addMovementStrategy(new LeftToRightDiagonalsStrategy());
-        addMovementStrategy(new RightToLeftDiagonalsStrategy());
+        addMovementStrategy(VerticalMoveStrategy.getInstance());
+        addMovementStrategy(HorizontalMoveStrategy.getInstance());
+        addMovementStrategy(LeftToRightDiagonalsStrategy.getInstance());
+        addMovementStrategy(RightToLeftDiagonalsStrategy.getInstance());
     }
 }

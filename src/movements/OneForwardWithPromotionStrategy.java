@@ -6,7 +6,18 @@ import handlers.BaseHandler;
 import handlers.PromotionHandler;
 import specialMoves.Promotion;
 
-public class OneForwardWithPromotionStrategy extends BasicOneForwardStrategy {
+public class OneForwardWithPromotionStrategy implements MoveStrategy {
+    private static MoveStrategy instance;
+
+    private OneForwardWithPromotionStrategy() { }
+
+    public static MoveStrategy getInstance() {
+        if (instance == null) {
+            instance = new OneForwardWithPromotionStrategy();
+        }
+        return instance;
+    }
+
 
     @Override
     public boolean validateMove(Board board, Square from, Square to) {
@@ -14,7 +25,7 @@ public class OneForwardWithPromotionStrategy extends BasicOneForwardStrategy {
             throw new IllegalArgumentException("NullPointer argument");
         }
 
-        boolean isHandled = super.validateMove(board, from, to);
+        boolean isHandled = BasicOneForwardStrategy.getInstance().validateMove(board, from, to);
 
         if (isHandled) {
             BaseHandler handler5 = new PromotionHandler();

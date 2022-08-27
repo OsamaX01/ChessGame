@@ -21,6 +21,6 @@ public class Knight extends Piece {
 
     @Override
     protected void setMovements() {
-        addMovementStrategy(new KnightStandardStrategy());
+        addMovementStrategy(KnightStandardStrategy.getInstance());
     }
 }

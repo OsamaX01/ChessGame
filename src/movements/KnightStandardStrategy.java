@@ -5,6 +5,17 @@ import generalComponents.Square;
 import handlers.*;
 
 public class KnightStandardStrategy implements MoveStrategy {
+    private static MoveStrategy instance;
+
+    private KnightStandardStrategy() { }
+
+    public static MoveStrategy getInstance() {
+        if (instance == null) {
+            instance = new KnightStandardStrategy();
+        }
+        return instance;
+    }
+
     @Override
     public boolean validateMove(Board board, Square from, Square to) {
         if (board == null || from == null || to == null) {
