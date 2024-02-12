@@ -24,7 +24,7 @@
 The chess game project is a project that implements the standard chess game as a showcase for OOD design. The purpose of this project is to apply design patterns, SOLID principles, and clean code principles.
 
 ### **Software Design:**
-**Here we start:**
+
 I’ll start describing the design from the first moment I started thinking about it. I wanted to simplify the process of the game by dividing the problem into parts by thinking of what components the game has, what
 are the states and the actions of each component, and how these components act with each other in the system.
 
@@ -162,11 +162,12 @@ Note: if new validations are added this can be refactored using Chain Of respons
 
     1- Association: is used more often to describe the relationship between components and can be viewed in handler classes, and move strategies classes example:
 
-      ![image](https://github.com/OsamaX01/ChessGame/assets/77506711/09d95029-122c-4f02-8648-cb54cf9d2a5a)
+  ![image](https://github.com/OsamaX01/ChessGame/assets/77506711/09d95029-122c-4f02-8648-cb54cf9d2a5a)
+  ![image](https://github.com/OsamaX01/ChessGame/assets/77506711/82f73b15-a201-4e4a-a0e2-12704e049d89)
 
     2- Composition: This can be shown in Chess Game class It aggregates the chessboard.
 
-      ![image](https://github.com/OsamaX01/ChessGame/assets/77506711/82f73b15-a201-4e4a-a0e2-12704e049d89)
+  ![image](https://github.com/OsamaX01/ChessGame/assets/77506711/5b8ca925-b5b2-4e14-9985-c0ad99104987)
 
     3- Aggregation: This is rarely used in my code.
 
@@ -180,17 +181,22 @@ Reasons:
 - A lot of pieces that only differ in the way they execute movements.
 - Use different variants of movements within a piece object and be able to switch from one movement to another during runtime.
 
+![image](https://github.com/OsamaX01/ChessGame/assets/77506711/38c61cfa-6684-4049-8344-3a9ac55c85cc)
+
 **2- Chain of Responsibility pattern:** 
 used in the validation process for all the moves.
 Reasons:
 - The program requires processing different kinds of validation requests in various ways.
 - It’s essential to execute several validations in a particular order.
 
+![image](https://github.com/OsamaX01/ChessGame/assets/77506711/a213bcc3-4bfd-48a5-bc82-69d7462a4d59)
+
 These two patterns apply Single Responsibility + Open Closed principles (If we add new rules for any piece, we do not edit the current code, add new
 classes to the system each has a single responsibility).
 
 **UML for the two patterns:**
 
+![image](https://github.com/OsamaX01/ChessGame/assets/77506711/ea0e2fe2-be1b-41ff-bfbb-f387db67cfda)
 
 **3- Factory Method pattern**: 
 I used this pattern in creating pieces in the Piece Factory class. Whenever you need to create a piece, you can pass its name.
@@ -198,8 +204,12 @@ Reasons:
 - Single Responsibility: separate the responsibility of creating pieces from another class
 - Code Reusability: factory can be used in multiple functions.
 
+![image](https://github.com/OsamaX01/ChessGame/assets/77506711/3046a05f-066d-40b8-aaee-fcbe4f3e73f3)
+
 **4- Singleton pattern:**
 I also used it in movement strategy classes since there’s no meaning of having multiple instances from the same movement strategy.
+
+![image](https://github.com/OsamaX01/ChessGame/assets/77506711/5cc47bce-dad9-47ee-add5-e94eeea0c5b3)
 
 ## **Defending Clean Code Principles:** <a name="cleanCode"></a>
 
@@ -222,6 +232,9 @@ I also used it in movement strategy classes since there’s no meaning of having
       - Booleans starts with is/can except validate function
 - Avoided returning null
 - Used Fail fast and return early.
+
+  ![image](https://github.com/OsamaX01/ChessGame/assets/77506711/40338dbe-1c19-4c23-a09d-64da6b94b1b1)
+
 - Indentation: I use Google Style sheet indentation style.
     - Except for tab size: I use 4 spaces.
 
@@ -240,6 +253,8 @@ I also used it in movement strategy classes since there’s no meaning of having
 - **Dependency Inversion:** applied in my code in Board class as it uses a general Piece (supertype) as a private member, and all its functions have a general piece.
   So, if I want to add a new piece in the future the board class will not be affected.
 
+  ![image](https://github.com/OsamaX01/ChessGame/assets/77506711/949827ef-2c0b-486f-b20b-04aca6706ede)
+
 ## **Special moves:** <a name="specialMoves"></a>
 
 Special moves can be implemented as the same as normal moves. You need to make a suitable Movement strategy for this move. And the handlers required validation. 
@@ -250,3 +265,7 @@ Promotion: change a pawn into a new piece.
 Castling: moving the rock alongside with king.
 
 These special actions should have a separate class that does this special thing and this class will be added to the move strategy to make the required action.
+
+![image](https://github.com/OsamaX01/ChessGame/assets/77506711/860932fc-14db-44b8-8fb7-d288226ac2c1)
+
+![image](https://github.com/OsamaX01/ChessGame/assets/77506711/1557720d-1c3b-4724-81dc-ab9bf45be088)
