@@ -10,13 +10,13 @@
 
 3- [Explaining object-oriented design and Applying Design patterns](#explaining)
 
-4- [Explaining Design Patterns](#DP)
+4- [Explaining Design Patterns](#designpatterns)
 
-5- [Defending Clean Code Principles](#cleanCode)
+5- [Defending Clean Code Principles](#cleancode)
 
-6- [Defending against SOLID Principles](#SOLID)
+6- [Defending against SOLID Principles](#solid)
 
-7- [Special moves](#specialMoves)
+7- [Special moves](#special)
 
 
 ## **Introduction:** <a name="intro"></a>
@@ -174,7 +174,7 @@ Note: if new validations are added this can be refactored using Chain Of respons
 - **Generalization** is shown a lot as I mentioned in **” Thinking in terms of OOD section”** Such as Piece, Handler, and Board base classes with a lot of concrete classes.
 
 
-## **Explaining Design patterns:** <a name="DP"></a>
+## **Explaining Design patterns:** <a name="designpatterns"></a>
 
 1- **Strategy pattern**: used for all movements as mentioned before.
 Reasons:
@@ -211,7 +211,7 @@ I also used it in movement strategy classes since there’s no meaning of having
 
 ![image](https://github.com/OsamaX01/ChessGame/assets/77506711/5cc47bce-dad9-47ee-add5-e94eeea0c5b3)
 
-## **Defending Clean Code Principles:** <a name="cleanCode"></a>
+## **Defending Clean Code Principles:** <a name="cleancode"></a>
 
 - Functions do only one thing. e.g., getValidMove (Player player), makeMove(Player current layer)
 - No massive conditional statements (polymorphism is used a lot)
@@ -239,7 +239,7 @@ I also used it in movement strategy classes since there’s no meaning of having
     - Except for tab size: I use 4 spaces.
 
 
-## **Defending On SOLID Principles:** <a name="SOLID"></a>
+## **Defending On SOLID Principles:** <a name="solid"></a>
 
 - **Single Responsibility**: is well applied in my code, every class has a clear responsibility and each function has only one main task to do.
 
@@ -255,7 +255,7 @@ I also used it in movement strategy classes since there’s no meaning of having
 
   ![image](https://github.com/OsamaX01/ChessGame/assets/77506711/949827ef-2c0b-486f-b20b-04aca6706ede)
 
-## **Special moves:** <a name="specialMoves"></a>
+## **Special moves:** <a name="specialmoves"></a>
 
 Special moves can be implemented as the same as normal moves. You need to make a suitable Movement strategy for this move. And the handlers required validation. 
 The only difference is that this is a special move, so it does something special.
