@@ -1,7 +1,5 @@
 # ChessGame
 
-# Chess Game Report
-
 ## Table of contents:
 
 1- [Introduction](#intro)
